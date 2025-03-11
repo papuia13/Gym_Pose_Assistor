@@ -100,3 +100,22 @@ input[type="number"] {
     font-size: 1.2em;
     text-align: center;
 }
+
+/* Add custom styles for centering and resizing the video feed */
+#pose-detection-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#pose-detection-result img {
+    max-width: 100%;
+    height: auto;
+}
+
+.video-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request, Response
 import threading
-from pose_detection import pose_detection, set_current_exercise, pose_detection_active
+from pose_detection import pose_detection, set_current_exercise, stop_pose_detection, pose_detection_active
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -24,8 +24,7 @@ def start_pose_detection_route():
 
 @app.route('/stop_pose_detection', methods=['GET'])
 def stop_pose_detection_route():
-    global pose_detection_active
-    pose_detection_active = False
+    stop_pose_detection()
     return jsonify({'status': 'success'})
 
 @app.route('/video_feed')

@@ -23,8 +23,8 @@ async function startPoseDetection(exercise) {
                 // Display the video feed
                 const videoFeed = document.createElement('img');
                 videoFeed.src = '/video_feed';
-                videoFeed.width = 640;
-                videoFeed.height = 480;
+                videoFeed.width = 800; // Increase the width of the video feed
+                videoFeed.height = 600; // Increase the height of the video feed
                 videoFeed.style.display = 'block';
                 document.getElementById('pose-detection-result').appendChild(videoFeed);
 

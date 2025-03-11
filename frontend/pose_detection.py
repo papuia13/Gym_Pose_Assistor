@@ -5,9 +5,10 @@ from pose_calculations import calculate_bicep_curl, calculate_tricep_extension, 
 
 pose_detection_active = False
 current_exercise = None
+cap = None
 
 def pose_detection():
-    global pose_detection_active
+    global pose_detection_active, cap
     pose_detection_active = True
 
     mp_pose = mp.solutions.pose
@@ -74,3 +75,10 @@ def pose_detection():
 def set_current_exercise(exercise):
     global current_exercise
     current_exercise = exercise
+
+def stop_pose_detection():
+    global pose_detection_active, cap
+    pose_detection_active = False
+    if cap is not None:
+        cap.release()
+        cap = None
