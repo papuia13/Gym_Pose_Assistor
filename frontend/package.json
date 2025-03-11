@@ -1,0 +1,22 @@
+{
+  "name": "gym-action-tracker",
+  "version": "1.0.0",
+  "description": "A web application to track gym actions and provide personalized fitness and nutrition plans.",
+  "main": "src/js/app.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step not defined'",
+    "test": "echo 'Test step not defined'"
+  },
+  "keywords": [
+    "gym",
+    "fitness",
+    "nutrition",
+    "tracker"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}

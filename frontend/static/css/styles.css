@@ -1,0 +1,102 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f5f5dc, #fffaf0); /* Beige to floral white gradient */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #6A4E42; /* Dark Brown */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: #8B5E3C; /* Medium Brown */
+    color: #fff;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 80px; /* Add margin space at the end */
+}
+
+section {
+    flex: 1;
+    margin-bottom: 40px;
+    background: #fffaf0; /* Floral white */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #6A4E42; /* Dark Brown */
+    margin-top: 0;
+}
+
+button {
+    background-color: #6A4E42; /* Dark Brown */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #8B5E3C; /* Medium Brown */
+}
+
+input[type="number"] {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+    background: #fffaf0; /* Floral white */
+    color: #333;
+}
+
+#bmi-result {
+    flex: 0 0 300px;
+    margin-left: 20px;
+    padding: 20px;
+    background: #fffaf0; /* Floral white */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #6A4E42; /* Dark Brown */
+    font-size: 1.2em;
+    text-align: center;
+}
