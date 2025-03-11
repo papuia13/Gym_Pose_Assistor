@@ -1,7 +1,8 @@
 import cv2
 import mediapipe as mp
-from flask import Response
+from flask import Response, jsonify
 from pose_calculations import calculate_bicep_curl, calculate_tricep_extension, calculate_shoulder_press, calculate_deadlift
+import time
 
 pose_detection_active = False
 current_exercise = None
@@ -43,12 +44,18 @@ def pose_detection():
             
             if current_exercise == 'bicep':
                 right_counter, left_counter, right_stage, left_stage, right_set, left_set = calculate_bicep_curl(landmarks, image, right_counter, left_counter, right_stage, left_stage, right_set, left_set)
+                counter = right_counter + left_counter
+                sets = right_set + left_set
             
             elif current_exercise == 'tricep':
                 right_counter, left_counter, right_stage, left_stage, right_set, left_set = calculate_tricep_extension(landmarks, image, right_counter, left_counter, right_stage, left_stage, right_set, left_set)
+                counter = right_counter + left_counter
+                sets = right_set + left_set
                 
             elif current_exercise == 'shoulder':
                 right_counter, left_counter, right_stage, left_stage, right_set, left_set = calculate_shoulder_press(landmarks, image, right_counter, left_counter, right_stage, left_stage, right_set, left_set)
+                counter = right_counter + left_counter
+                sets = right_set + left_set
                 
             elif current_exercise == 'deadlift':
                 counter, stage, sets = calculate_deadlift(landmarks, image, counter, stage, sets)
@@ -72,9 +79,25 @@ def pose_detection():
     cap.release()
     pose_detection_active = False
 
+def pose_detection_counts():
+    global pose_detection_active, cap, current_exercise
+    while pose_detection_active:
+        yield f"data: {jsonify({'reps': counter, 'sets': sets}).data.decode()}\n\n"
+        time.sleep(1)
+
 def set_current_exercise(exercise):
-    global current_exercise
+    global current_exercise, counter, stage, sets, left_counter, right_counter, left_stage, right_stage, left_set, right_set
     current_exercise = exercise
+    # Reset counters and stages
+    counter = 0
+    stage = None
+    sets = 0
+    left_counter = 0
+    right_counter = 0
+    left_stage = None
+    right_stage = None
+    left_set = 0
+    right_set = 0
 
 def stop_pose_detection():
     global pose_detection_active, cap
