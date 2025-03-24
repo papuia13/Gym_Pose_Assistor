@@ -36,6 +36,8 @@ async function startPoseDetection(exercise) {
                     const data = JSON.parse(event.data);
                     repCount = data.reps;
                     setCount = data.sets;
+                    console.log("/pose_counts is called");
+                    console.log(`Reps: ${repCount}, Sets: ${setCount}`);
                     updateCountDisplay();
                 };
 

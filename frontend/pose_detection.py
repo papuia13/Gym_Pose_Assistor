@@ -3,13 +3,14 @@ import mediapipe as mp
 from flask import Response, jsonify
 from pose_calculations import calculate_bicep_curl, calculate_tricep_extension, calculate_shoulder_press, calculate_deadlift
 import time
+import json
 
 pose_detection_active = False
 current_exercise = None
 cap = None
 
 def pose_detection():
-    global pose_detection_active, cap
+    global pose_detection_active, cap, counter, stage, sets, left_counter, right_counter, left_stage, right_stage, left_set, right_set
     pose_detection_active = True
 
     mp_pose = mp.solutions.pose
@@ -80,9 +81,9 @@ def pose_detection():
     pose_detection_active = False
 
 def pose_detection_counts():
-    global pose_detection_active, cap, current_exercise
+    global pose_detection_active, cap, current_exercise, counter, sets
     while pose_detection_active:
-        yield f"data: {jsonify({'reps': counter, 'sets': sets}).data.decode()}\n\n"
+        yield f"data: {json.dumps({'reps': counter, 'sets': sets})}\n\n"
         time.sleep(1)
 
 def set_current_exercise(exercise):
