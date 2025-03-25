@@ -79,9 +79,28 @@
             <button type="button" onclick="startPoseDetection('shoulder')">Start Shoulder Press Detection</button>
             <button type="button" onclick="startPoseDetection('deadlift')">Start Deadlift Detection</button>
             <button type="button" onclick="stopPoseDetection()">Stop Pose Detection</button>
-            <div id="pose-detection-result" class="video-container"></div>
-            <div id="rep-count">Reps: 0</div>
-            <div id="set-count">Sets: 0</div>
+
+            
+            
+            <div id="pose-detection-container" class="pose-detection-container" style="display: none;">
+                <div class="pose-left-container">
+                    <div class="left-stats">
+                        <div id="left-stage">Left Stage: </div>
+                        <div id="left-rep">Left Reps: </div>
+                        <div id="left-set">Left Sets: </div>
+                    </div>
+                </div>
+            
+                <div id="pose-detection-result" class="video-container"></div>
+            
+                <div class="pose-right-container">
+                    <div class="right-stats">
+                        <div id="right-stage">Right Stage: </div>
+                        <div id="right-rep">Right Reps: </div>
+                        <div id="right-set">Right Sets: </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 

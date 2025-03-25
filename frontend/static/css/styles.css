@@ -1,3 +1,4 @@
+/* General body styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to right, #f5f5dc, #fffaf0); /* Beige to floral white gradient */
@@ -6,18 +7,22 @@ body {
     padding: 0;
 }
 
+/* Header styling */
 header {
     background-color: #6A4E42; /* Dark Brown */
     color: white;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
 }
 
 header h1 {
     margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 1px;
 }
 
+/* Navigation bar styling */
 nav ul {
     list-style: none;
     padding: 0;
@@ -36,6 +41,7 @@ nav ul li a {
     padding: 10px 20px;
     border-radius: 10px;
     transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
 }
 
 nav ul li a:hover, nav ul li a.active {
@@ -43,6 +49,7 @@ nav ul li a:hover, nav ul li a.active {
     color: #fff;
 }
 
+/* Main content styling */
 main {
     display: flex;
     justify-content: space-between;
@@ -57,13 +64,24 @@ section {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+section:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading styling */
 h2 {
     color: #6A4E42; /* Dark Brown */
     margin-top: 0;
+    font-size: 1.8em;
+    border-bottom: 2px solid #8B5E3C; /* Medium Brown */
+    padding-bottom: 5px;
 }
 
+/* Button styling */
 button {
     background-color: #6A4E42; /* Dark Brown */
     color: white;
@@ -71,13 +89,17 @@ button {
     border-radius: 10px;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 button:hover {
     background-color: #8B5E3C; /* Medium Brown */
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
+/* Input field styling */
 input[type="number"] {
     border-radius: 10px;
     padding: 10px;
@@ -87,8 +109,10 @@ input[type="number"] {
     box-sizing: border-box;
     background: #fffaf0; /* Floral white */
     color: #333;
+    font-size: 1em;
 }
 
+/* BMI result styling */
 #bmi-result {
     flex: 0 0 300px;
     margin-left: 20px;
@@ -101,7 +125,55 @@ input[type="number"] {
     text-align: center;
 }
 
-/* Add custom styles for centering and resizing the video feed */
+/* Pose detection container styling */
+.pose-detection-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    background: #fffaf0; /* Floral white */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Left and right container styling */
+.pose-left-container, .pose-right-container {
+    flex: 1; /* 1 part of the 1:3:1 ratio */
+    text-align: center;
+    margin: 0 30px; /* Add horizontal gaps between the video container and the left/right stats */
+}
+
+.video-container {
+    flex: 3; /* 3 parts of the 1:3:1 ratio */
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Left and right stats styling */
+.left-stats div, .right-stats div {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left-stats, .right-stats {
+    display: inline-block;
+    width: 100%;
+}
+
+/* Video feed styling */
 #pose-detection-result {
     display: flex;
     justify-content: center;
@@ -112,10 +184,6 @@ input[type="number"] {
 #pose-detection-result img {
     max-width: 100%;
     height: auto;
-}
-
-.video-container {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

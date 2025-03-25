@@ -9,8 +9,9 @@ pose_detection_active = False
 current_exercise = None
 cap = None
 
+
 def pose_detection():
-    global pose_detection_active, cap, counter, stage, sets, left_counter, right_counter, left_stage, right_stage, left_set, right_set
+    global pose_detection_active, cap, counter, stage, sets, left_reps, right_reps, left_stage, right_stage, left_set, right_set
     pose_detection_active = True
 
     mp_pose = mp.solutions.pose
@@ -21,10 +22,10 @@ def pose_detection():
     stage = None
     sets = 0
 
-    left_counter = 0
-    right_counter = 0
-    left_stage = None
-    right_stage = None
+    left_reps = 0
+    right_reps = 0
+    left_stage = "--"
+    right_stage = "--"
     left_set = 0
     right_set = 0
 
@@ -44,22 +45,16 @@ def pose_detection():
             landmarks = result.pose_landmarks.landmark
             
             if current_exercise == 'bicep':
-                right_counter, left_counter, right_stage, left_stage, right_set, left_set = calculate_bicep_curl(landmarks, image, right_counter, left_counter, right_stage, left_stage, right_set, left_set)
-                counter = right_counter + left_counter
-                sets = right_set + left_set
+                right_reps, left_reps, right_stage, left_stage, right_set, left_set = calculate_bicep_curl(landmarks, image, right_reps, left_reps, right_stage, left_stage, right_set, left_set)
             
             elif current_exercise == 'tricep':
-                right_counter, left_counter, right_stage, left_stage, right_set, left_set = calculate_tricep_extension(landmarks, image, right_counter, left_counter, right_stage, left_stage, right_set, left_set)
-                counter = right_counter + left_counter
-                sets = right_set + left_set
+                right_reps, left_reps, right_stage, left_stage, right_set, left_set = calculate_tricep_extension(landmarks, image, right_reps, left_reps, right_stage, left_stage, right_set, left_set)
                 
             elif current_exercise == 'shoulder':
-                right_counter, left_counter, right_stage, left_stage, right_set, left_set = calculate_shoulder_press(landmarks, image, right_counter, left_counter, right_stage, left_stage, right_set, left_set)
-                counter = right_counter + left_counter
-                sets = right_set + left_set
+                right_reps, left_reps, right_stage, left_stage, right_set, left_set = calculate_shoulder_press(landmarks, image, right_reps, left_reps, right_stage, left_stage, right_set, left_set)
                 
             elif current_exercise == 'deadlift':
-                counter, stage, sets = calculate_deadlift(landmarks, image, counter, stage, sets)
+                right_reps, right_stage, right_set = calculate_deadlift(landmarks, image, counter, stage, sets)
                 
         except AttributeError as e:
             print(f"An error occurred: {e}")
@@ -81,13 +76,13 @@ def pose_detection():
     pose_detection_active = False
 
 def pose_detection_counts():
-    global pose_detection_active, cap, current_exercise, counter, sets
+    global pose_detection_active, right_reps, left_reps, right_stage, left_stage, right_set, left_set
     while pose_detection_active:
-        yield f"data: {json.dumps({'reps': counter, 'sets': sets})}\n\n"
+        yield f"data: {json.dumps({'right_reps':right_reps, 'left_reps':left_reps, 'right_stage':right_stage, 'left_stage':left_stage, 'right_set':right_set, 'left_set':left_set})}\n\n"
         time.sleep(1)
 
 def set_current_exercise(exercise):
-    global current_exercise, counter, stage, sets, left_counter, right_counter, left_stage, right_stage, left_set, right_set
+    global current_exercise, counter, stage, sets, left_reps, right_reps, left_stage, right_stage, left_set, right_set
     current_exercise = exercise
     # Reset counters and stages
     counter = 0
