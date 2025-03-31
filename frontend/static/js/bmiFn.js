@@ -13,7 +13,7 @@ function calculateBMI() {
     if (bmi < 18.5) {
         category = "Underweight";
     } else if (bmi >= 18.5 && bmi < 24.9) {
-        category = "Normal weight";
+        category = "NormalWeight";
     } else if (bmi >= 25 && bmi < 29.9) {
         category = "Overweight";
     } else {
@@ -23,58 +23,35 @@ function calculateBMI() {
     document.getElementById('bmi-result').innerText = `Your BMI is: ${bmi.toFixed(2)} (${category})`;
     localStorage.setItem('bmi', bmi.toFixed(2));
     localStorage.setItem('bmiCategory', category);
+
+    // Enable the buttons for nutrition and workout plans
+    document.getElementById('nutrition-plan-btn').disabled = false;
+    document.getElementById('workout-plan-btn').disabled = false;
 }
 
 function getNutritionPlan() {
     const bmi = localStorage.getItem('bmi');
     const category = localStorage.getItem('bmiCategory');
-    let plan = "";
-        
-    if (!bmi || !category) {
-        plan = "Please calculate your BMI first.";
-    } else {
-        switch (category) {
-            case "Underweight":
-                plan = "Your nutrition plan should include high-calorie foods like nuts, dried fruits, and whole grains.";
-                break;
-            case "Normal weight":
-                plan = "Your nutrition plan should include a balanced diet with a mix of proteins, carbohydrates, and fats.";
-                break;
-            case "Overweight":
-                plan = "Your nutrition plan should focus on low-calorie, nutrient-dense foods like vegetables, fruits, and lean proteins.";
-                break;
-            case "Obese":
-                plan = "Your nutrition plan should focus on reducing calorie intake and increasing physical activity. Consult a dietitian for a personalized plan.";
-                break;
-        }
+
+    if (!bmi || !category || bmi === "null" || category === "null") {
+        document.getElementById('nutrition-plan-result').innerText = "BMI value is required. Please calculate your BMI first.";
+        return;
     }
 
-    document.getElementById('nutrition-plan-result').innerText = plan;
+    // Display the appropriate nutrition plan
+    document.getElementById('nutrition-plan-result').innerHTML = NutritionPlans[category] || "No plan available for this category.";
 }
+
 
 function getWorkoutPlan() {
     const bmi = localStorage.getItem('bmi');
     const category = localStorage.getItem('bmiCategory');
-    let plan = "";
-        
-    if (!bmi || !category) {
-        plan = "Please calculate your BMI first.";
-    } else {
-        switch (category) {
-            case "Underweight":
-                plan = "Your workout plan should focus on strength training to build muscle mass.";
-                break;
-            case "Normal weight":
-                plan = "Your workout plan should include a mix of cardio and strength training exercises.";
-                break;
-            case "Overweight":
-                plan = "Your workout plan should focus on cardio exercises to burn calories and strength training to build muscle.";
-                break;
-            case "Obese":
-                plan = "Your workout plan should focus on low-impact cardio exercises and gradually increase intensity. Consult a fitness trainer for a personalized plan.";
-                break;
-        }
+
+    if (!bmi || !category || bmi === "null" || category === "null") {
+        document.getElementById('workout-plan-result').innerText = "BMI value is required. Please calculate your BMI first.";
+        return;
     }
 
-    document.getElementById('workout-plan-result').innerText = plan;
+    // Display the appropriate workout plan
+    document.getElementById('workout-plan-result').innerHTML = WorkoutPlans[category] || "No plan available for this category.";
 }

@@ -60,14 +60,14 @@
         <section id="nutrition-plan" class="tab-content" style="display:none;">
             <h2>🍎 Nutrition</h2>
             <p>Get the best nutrition plan tailored for your body.</p>
-            <button type="button" onclick="getNutritionPlan()">Get Nutrition Plan</button>
+            <button id="nutrition-plan-btn" type="button" onclick="getNutritionPlan()" disabled>Get Nutrition Plan</button>
             <p id="nutrition-plan-result"></p>
         </section>
 
         <section id="workout-plan" class="tab-content" style="display:none;">
             <h2>🏃 Workout Plan</h2>
             <p>Get a personalized workout plan based on your BMI.</p>
-            <button type="button" onclick="getWorkoutPlan()">Get Workout Plan</button>
+            <button id="workout-plan-btn" type="button" onclick="getWorkoutPlan()" disabled>Get Workout Plan</button>
             <p id="workout-plan-result"></p>
         </section>
 
@@ -80,8 +80,6 @@
             <button type="button" onclick="startPoseDetection('deadlift')">Start Deadlift Detection</button>
             <button type="button" onclick="stopPoseDetection()">Stop Pose Detection</button>
 
-            
-            
             <div id="pose-detection-container" class="pose-detection-container" style="display: none;">
                 <div class="pose-left-container">
                     <div class="left-stats">
@@ -90,9 +88,9 @@
                         <div id="left-set">Left Sets: </div>
                     </div>
                 </div>
-            
+
                 <div id="pose-detection-result" class="video-container"></div>
-            
+
                 <div class="pose-right-container">
                     <div class="right-stats">
                         <div id="right-stage">Right Stage: </div>
@@ -110,6 +108,7 @@
 
     <script src="{{ url_for('static', filename='js/bmiFn.js') }}"></script>
     <script src="{{ url_for('static', filename='js/pose.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nutritionWorkoutPlans.js') }}"></script>
     <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
