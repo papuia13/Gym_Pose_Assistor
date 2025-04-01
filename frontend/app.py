@@ -35,5 +35,7 @@ def video_feed():
 def pose_counts():
     return Response(pose_detection_counts(), mimetype='text/event-stream')
 
+
+
 if __name__ == "__main__":
     app.run(debug=True)

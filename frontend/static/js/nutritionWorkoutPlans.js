@@ -13,7 +13,7 @@ const NutritionPlans = {
             <tr><td>Monday</td><td>Breakfast</td><td>Whole eggs, toast with avocado, milk with chia seeds</td><td>Protein, Healthy fats</td><td>3 eggs, 2 slices, 250ml</td></tr>
             <tr><td>Tuesday</td><td>Lunch</td><td>Chicken bekang (fermented paste) curry, rice, bamboo shoot salad</td><td>Iron, Probiotics</td><td>200g chicken, 1 cup rice</td></tr>
             <tr><td>Wednesday</td><td>Snack</td><td>Banana with peanut butter, protein shake</td><td>Potassium, Protein</td><td>2 bananas, 30g PB, 300ml</td></tr>
-            <tr><td>Thursday</td><td>Dinner</td><td>Grilled fish with Mizo dal, roasted potatoes</td><td>Omega-3, Fiber</td><td>250g fish, 1 cup dal</td></tr>
+            <tr><td>Thursday</td><td>Dinner</td><td>Grilled fish with Dal, roasted potatoes</td><td>Omega-3, Fiber</td><td>250g fish, 1 cup dal</td></tr>
             <tr><td>Friday</td><td>Breakfast</td><td>Oatmeal with nuts, dried fruits, Mizo honey</td><td>Complex carbs</td><td>1 cup oats, 30g nuts</td></tr>
             <tr><td>Saturday</td><td>Lunch</td><td>Lentils, chapati, curd, bamboo shoot salad</td><td>Plant protein</td><td>1 cup lentils, 2 chapati</td></tr>
             <tr><td>Sunday</td><td>Dinner</td><td>Mizo veggie curry with pork, sticky rice</td><td>B Vitamins</td><td>150g pork, 1 cup rice</td></tr>
